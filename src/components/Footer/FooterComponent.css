@@ -1,0 +1,19 @@
+.footer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #202124;
+}
+
+.controls {
+    color: white;
+    background-color: #3c4043;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
