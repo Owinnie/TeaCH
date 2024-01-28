@@ -48,6 +48,7 @@ Share your screen or control another participant's desktop during the meeting.
   
 <h2>Contribution</h2>
 TeaCH is an open-source project, and I welcome contributions from the community.
+Special thanks to @CK Algos @Amir Eshaq on You Tube
   
 <h2>License</h2>
 TeaCH is licensed under the MIT License.
