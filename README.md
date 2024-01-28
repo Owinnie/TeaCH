@@ -30,7 +30,7 @@ Ensure you have Node.js and npm installed on your machine.
 3. Install dependencies for the frontend and backend:
 
 <pre><code>npm install</code>
-<code>cd server && npm install</code>pre>
+<code>cd server && npm install</code></pre>
 
 4. Start the development server:
 
