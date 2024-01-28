@@ -1,7 +1,27 @@
 import React from "react";
 import "./ParticipantsComponent.css";
 import { Participant } from "./Participant/ParticipantComponent";
+import { useSelector } from "react-redux";
 
 export const Participants = () => {
-    return (<div></div>);
+    const participants = useSelector((state) => state.participants);
+    const participantsKey = Object.keys(participants)
+    const gridSize = participantsKey.length === 1 ? 1 : participantsKey.length <= 4 ? 2 : 4;
+    const colSize = participantsKey.length <= 4 ? 1 : 2;
+    const rowSize = participantsKey.length <= 4 ? participantsKey.length : Math.ceil(participantsKey.length / 2);
+    return (
+    <div
+    style={{
+        "--grid-size":gridSize,
+        "--grid-col-size":colSize,
+        "--grid-row-size":rowSize
+    }} 
+    className="participants">
+        {participantsKey.map(participantKey => {
+            const currentParticipant = participants[participantKey];
+            return (
+                <Participant participant={currentParticipant} key={participantKey} />
+            )
+        })}
+    </div>);
 }

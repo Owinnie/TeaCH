@@ -16,10 +16,15 @@ export const reducer = (state = initState, action) => {
             let { payload } = action;
             const currentUserId = Object.keys(state.currentUser)[0];
             const partId = Object.keys(payload.participant)[0];
+        
             if (currentUserId === partId) {
                 payload.participant[partId].currentUser = true;
             }
-            let participants = { ...state.participants, ...payload.participant }
+        
+            payload.participant[partId].avatarColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+        
+            // Use the participant ID as the key to update participants in the state
+            let participants = { ...state.participants, [partId]: { ...payload.participant[partId] }};
             state = { ...state, participants };
             return state;
         }

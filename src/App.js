@@ -1,6 +1,6 @@
 import dbRef, {userName, connRef} from './server/firebase';
 import "./App.css";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import { connect } from 'react-redux';
 import { setUser, addParticipants, removeParticipants } from './store/actioncreator';
 import { MainScreen } from './components/MainScreen/MainScreenComponent';
@@ -32,6 +32,7 @@ function App(props) {
 useEffect(() => {
   if (props.user) {
     participantsRef.on("child_added", snap => {
+      // console.log("Child Added:", snap.key);
       const { userName, preference } = snap.val();
       props.addParticipants ({
         [snap.key]: {
@@ -41,6 +42,7 @@ useEffect(() => {
       });
     });
     participantsRef.on("child_removed", snap => {
+      // console.log("Child Removed:", snap.key);
       props.removeParticipants (
         snap.key
       );
@@ -68,3 +70,22 @@ const mapDispatchProps = (dispatch) => {
 };
 
 export default connect(mapStateProps, mapDispatchProps)(App);
+
+// import React, { useRef } from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+// import { useRef } from 'react';
+
+// function App() {
+//   const videoRef = useRef()
+//   return (
+//     <div className="App">
+//       <>
+//       <span>800 * 600</span>
+//       <video ref={videoRef} className='video'>Video not available</video>
+//       </>
+//     </div>
+//   );
+// }
+
+// export default App;
